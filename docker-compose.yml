@@ -1,0 +1,48 @@
+services:
+  api:
+    build: .
+    container_name: rag-api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./gemini_api_key.txt:/app/gemini_api_key.txt:ro
+      - rag_faiss:/app/data/faiss
+      - rag_uploads:/app/data/uploads
+      - rag_logs:/app/data/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  streamlit:
+    build: .
+    container_name: rag-ui
+    env_file:
+      - .env
+    environment:
+      API_URL: http://api:8000
+    volumes:
+      - ./gemini_api_key.txt:/app/gemini_api_key.txt:ro
+      - rag_uploads:/app/data/uploads
+    command:
+      [
+        "streamlit",
+        "run",
+        "streamlit_app.py",
+        "--server.address=0.0.0.0",
+        "--server.port=8501"
+      ]
+    ports:
+      - "8501:8501"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  rag_faiss:
+  rag_uploads:
+  rag_logs:

@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+data/faiss/*
+data/uploads/*
+data/logs/*
+!data/faiss/.gitkeep
+!data/uploads/.gitkeep
+!data/logs/.gitkeep

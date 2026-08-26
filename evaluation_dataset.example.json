@@ -1,0 +1,8 @@
+[
+  {
+    "question": "Replace this with a question whose answer is in your source.",
+    "expected_sources": [
+      "https://example.com/"
+    ]
+  }
+]

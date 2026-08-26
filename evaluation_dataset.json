@@ -1,0 +1,33 @@
+[
+  {
+    "question": "What are the technical skills mentioned in my resume?",
+    "expected_sources": [
+      "/app/data/uploads/utkarsh Tripathi resume.pdf"
+    ]
+  },
+  {
+    "question": "What programming languages are mentioned in my resume?",
+    "expected_sources": [
+      "/app/data/uploads/utkarsh Tripathi resume.pdf"
+    ]
+  },
+  {
+    "question": "What is FastAPI used for?",
+    "expected_sources": [
+      "https://fastapi.tiangolo.com/"
+    ]
+  },
+  {
+    "question": "What does FastAPI provide for API documentation?",
+    "expected_sources": [
+      "https://fastapi.tiangolo.com/"
+    ]
+  },
+  {
+    "question": "Which skills from my resume could be useful for FastAPI development?",
+    "expected_sources": [
+      "/app/data/uploads/utkarsh Tripathi resume.pdf",
+      "https://fastapi.tiangolo.com/"
+    ]
+  }
+]
