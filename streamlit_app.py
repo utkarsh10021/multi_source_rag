@@ -23,11 +23,17 @@ st.set_page_config(
 # We set the environment variable BEFORE importing RAGService
 # because config.py reads GOOGLE_API_KEY during import.
 
-if "GOOGLE_API_KEY" in st.secrets:
-    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+# Load Gemini API key from Streamlit Secrets when available.
+# Locally, config.py will use gemini_api_key.txt instead.
 
-elif "GEMINI_API_KEY" in st.secrets:
-    os.environ["GOOGLE_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+try:
+    if "GOOGLE_API_KEY" in st.secrets:
+        os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+    elif "GEMINI_API_KEY" in st.secrets:
+        os.environ["GOOGLE_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+except Exception:
+    # No local Streamlit secrets.toml — that's okay.
+    pass
 
 
 # ============================================================
