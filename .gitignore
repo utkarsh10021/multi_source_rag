@@ -8,3 +8,5 @@ data/logs/*
 !data/faiss/.gitkeep
 !data/uploads/.gitkeep
 !data/logs/.gitkeep
+
+gemini_api_key.txt
