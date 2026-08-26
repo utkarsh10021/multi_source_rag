@@ -4,6 +4,7 @@ streamlit
 requests
 python-multipart
 playwright
+beautifulsoup4
 langchain-text-splitters
 langchain-google-genai
 langchain-community
