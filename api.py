@@ -9,6 +9,22 @@ from rag_service import RAGService
 from schemas import (
     AskRequest, CrawlRequest, IngestResponse, AskResult
 )
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/user")
+def get_user(user_id):
+    query = f"SELECT * FROM users WHERE id = {user_id}"
+    return execute_query(query)
+
+
+@app.get("/divide")
+def divide(a: int, b: int):
+    return a / b
+
+
+GITHUB_TOKEN = "ghp_example_secret_123456789"
 
 app = FastAPI(
     title="Multi-Source Intelligent RAG Chatbot",
