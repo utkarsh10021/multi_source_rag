@@ -1,19 +1,45 @@
 import shutil
+# CodeSentinel test
+#webhook
 from pathlib import Path
 from fastapi import FastAPI, UploadFile, File, HTTPException
-
+# AURA webhook test 4
+# AURA retry test 1
 from config import UPLOAD_DIR
 from rag_service import RAGService
 from schemas import (
     AskRequest, CrawlRequest, IngestResponse, AskResult
 )
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/user")
+def get_user(user_id):
+    query = f"SELECT * FROM users WHERE id = {user_id}"
+    return execute_query(query)
+
+
+@app.get("/divide")
+def divide(a: int, b: int):
+    return a / b
+
+
+GITHUB_TOKEN = "ghp_example_secret_123456789"
 
 app = FastAPI(
     title="Multi-Source Intelligent RAG Chatbot",
     version="1.0.0",
     description="Gemini + FAISS + BM25 RAG API",
 )
+# aura_security_test.py
 
+def get_user(user_id):
+    API_KEY = "sk-test-123456789"
+
+    query = "SELECT * FROM users WHERE id = " + user_id
+
+    return db.execute(query)
 service = None
 
 def get_service():
