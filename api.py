@@ -31,7 +31,14 @@ app = FastAPI(
     version="1.0.0",
     description="Gemini + FAISS + BM25 RAG API",
 )
+# aura_security_test.py
 
+def get_user(user_id):
+    API_KEY = "sk-test-123456789"
+
+    query = "SELECT * FROM users WHERE id = " + user_id
+
+    return db.execute(query)
 service = None
 
 def get_service():
